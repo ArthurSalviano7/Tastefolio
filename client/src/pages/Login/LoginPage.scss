@@ -25,14 +25,25 @@ $secondary-color: #EDE534;
     z-index: 2; 
 }
 
-.login-title {
+.img-title {
     font-family: $login-font, 'Times New Roman', Times, serif;
     font-size: 80px;
     color: $primary-color;
     font-weight: 400;
 }
 
+@media (max-width: 768px) {
+  /* Estilos para dispositivos menores que 768px de largura (tablets e celulares) */
+  .login-title {
+    font-size: 3rem; /* Aumenta o tamanho da fonte apenas em dispositivos menores */
+  }
+}
+
 .login-form {
     font-family: 'Noto Serif', serif;
+    min-height: 100vh; // O formulário ocupa toda a altura da tela
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly; // Centraliza verticalmente o conteúdo
 }
 

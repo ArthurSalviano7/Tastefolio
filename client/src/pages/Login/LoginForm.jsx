@@ -12,10 +12,10 @@ function LoginForm(){
 
     return (
         <div className="login-form">
-            <h1 className="text-center pt-5">Bem Vindo ao TasteFolio</h1>
-            <p className="text-center ">Insira seu email e senha para acessar a plataforma</p>
+            <h1 className="text-center pt-5 login-title">Bem Vindo ao TasteFolio</h1>
+            <p className="text-center">Insira seu email e senha para acessar a plataforma</p>
 
-            <form action="" className="p-2 py-5">
+            <form action="" className="p-2 pt-5 pb-3">
                 <label>Email:</label> <br />
                 <input type="text" className="d-grid col-12 py-1 my-2 border-1 border-light-subtle" placeholder="Insira seu email" />
                 
@@ -32,6 +32,8 @@ function LoginForm(){
                 
                 <button type="submit" className="btn btn-dark d-grid col-8 mx-auto">Entrar</button>
             </form>
+
+            <p className="text-center" style={{fontSize: '0.7rem'}}>Não possui uma conta?<a href=""> Registre-se</a></p>
         </div>
     );
 };
