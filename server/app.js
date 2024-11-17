@@ -17,6 +17,11 @@ app.all("*", (req, res, next) => {
 });
 app.use(errorHandler);
 
+app.use((err, req, res, next) => {
+    console.error(err.stack);
+    res.status(500).json({ status: "error", message: err.message });
+});
+
 
 const PORT = 8080;
 app.listen(PORT, () => {
