@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import RecipeCard from "../RecipeCard/RecipeCard"; // Componente de card da receita, que você ainda vai criar
 import { FaArrowRight, FaArrowLeft } from "react-icons/fa";
 import { IoIosArrowForward, IoIosArrowBack } from "react-icons/io";
@@ -29,9 +30,10 @@ function RecipeList({ recipes }) {
     <div className="recipe-list">
       <div className="row">
         {currentRecipes.map((recipe, index) => (
-          <div className="col-12 col-md-4 py-2" key={index}>
-            <RecipeCard recipe={recipe} />
-          </div>
+          
+            <div className="col-12 col-md-4 py-2" key={index}>
+                <RecipeCard recipe={recipe} />
+            </div>
         ))}
       </div>
 

@@ -1,6 +1,7 @@
 import axios from 'axios'
 
 const recipesUrl = "http://localhost:8080/recipes"
+const favoriteUrl = "http://localhost:8080/favorites"
 
 export async function getAllRecipes(){
     try {
@@ -11,7 +12,57 @@ export async function getAllRecipes(){
       } catch (error) {
         console.error("Erro ao buscar as receitas:", error.message);
       }
-    
+}
+
+export async function getRecipe(id){
+  try {
+      const response = await axios.get(`${recipesUrl}/${id}`);
+      
+      return response;
+    } catch (error) {
+      console.error("Erro ao buscar receita por id:", error.message);
+    }
+}
+
+export async function addRecipe(data){
+  try {
+      const response = await axios.post(recipesUrl, data);
+      
+      return response;
+    } catch (error) {
+      console.error("Erro ao adicionar receita!", error.message);
+    }
+}
+
+export async function addFavorite(data){ //data = {idUser, idRecipe}
+  try {
+      const response = await axios.post(favoriteUrl, data);
+      
+      return response;
+    } catch (error) {
+      console.error("Erro ao favoritar receita!", error.message);
+    }
+}
+
+
+export async function removeFavorite(data){ //data = {idUser, idRecipe}
+  try {
+      const response = await axios.put(favoriteUrl, data);
+      
+      return response;
+    } catch (error) {
+      console.error("Erro ao deletar favorito!", error.message);
+    }
+}
+
+export async function getAllFavorites(id){ 
+  try {
+      const response = await axios.get(`${favoriteUrl}/${id}`);
+      
+      return response;
+    } catch (error) {
+      console.error("Erro ao buscar favoritos!", error.message);
+    }
 }
 
 export function convertToShareableLink(imageURL) {

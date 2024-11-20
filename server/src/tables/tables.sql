@@ -33,3 +33,11 @@ createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 PRIMARY KEY (id),
 FOREIGN KEY (idUser) REFERENCES users(id),
 FOREIGN KEY (idRecipe) REFERENCES recipes(id));
+
+/* TABELA DE FAVORITOS*/
+CREATE TABLE user_favorite_recipe(
+idUser int NOT NULL,
+idRecipe int NOT NULL,
+FOREIGN KEY (idUser) REFERENCES users(id),
+FOREIGN KEY (idRecipe) REFERENCES recipes(id),
+CONSTRAINT unique_user_recipe UNIQUE (idUser, idRecipe));

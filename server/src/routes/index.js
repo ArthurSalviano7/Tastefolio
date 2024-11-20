@@ -26,6 +26,12 @@ router
     .put(upload.single("image"), recipeController.updateRecipe)  // Adding multer on recipe update
     .delete(recipeController.deleteRecipe);
 
+/* Favorite Recipes */
+router.route("/favorites")
+    .post(recipeController.addFavorite)
+    .put(recipeController.removeFavorite);
+router.route("/favorites/:id").get(recipeController.getAllFavoritesRecipes)
+
  /* Comment Routes (CRUD) */
 router.route("/comments").get(commentController.getAllComments).post(commentController.createComment);
 router

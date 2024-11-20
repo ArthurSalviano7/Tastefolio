@@ -63,6 +63,64 @@ exports.getAllRecipes = (req, res, next) => {
     });
    };
 
+exports.addFavorite = (req, res, next) => {
+  const { idUser, idRecipe } = req.body;
+
+  conn.query("INSERT INTO user_favorite_recipe (idUser, idRecipe) VALUES (?, ?)",
+    [idUser, idRecipe], 
+    function (err, data, fields) {
+    if (err) return next(new AppError(err))
+    res.status(200).json({
+      status: "success",
+      length: data?.length,
+      data: data,
+    });
+  });
+};
+
+exports.removeFavorite = (req, res, next) => {
+  const { idUser, idRecipe } = req.body;
+
+  conn.query(
+    "DELETE FROM user_favorite_recipe WHERE idUser = ? AND idRecipe = ?",
+    [idUser, idRecipe],
+    (err, result) => {
+      if (err) {
+        return next(new AppError(err.message, 500));
+      }
+
+      if (result.affectedRows === 0) {
+        return res.status(404).json({
+          status: "fail",
+          message: "Favorito não encontrado.",
+        });
+      }
+
+      res.status(200).json({
+        status: "success",
+        message: "Favorito removido com sucesso.",
+      });
+    }
+  );
+};
+
+exports.getAllFavoritesRecipes = (req, res, next) => {
+  if (!req.params.id) {
+    return next(new AppError("No user id found", 404));
+  }
+
+  conn.query("SELECT * FROM user_favorite_recipe WHERE idUser=?",
+    [req.params.id], 
+    function (err, data, fields) {
+    if (err) return next(new AppError(err))
+    res.status(200).json({
+      status: "success",
+      length: data?.length,
+      data: data,
+    });
+  });
+};
+
 exports.createRecipe = async (req, res, next) => {
     console.log("Arquivo recebido:", req.file); // Log da imagem recebida
     console.log("Dados recebidos:", req.body);
