@@ -8,6 +8,8 @@ import HomePage from './pages/Home/HomePage';
 import RecipePage from './pages/RecipePage/RecipePage';
 import AddRecipePage from './pages/AddRecipePage/AddRecipePage';
 import Favorites from './pages/Favorites/Favorites';
+import SearchPage from './pages/SearchPage/SearchPage';
+
 
 function App() {
   return (
@@ -20,6 +22,7 @@ function App() {
           <Route path='/recipes/:id' element={<RecipePage />}></Route>
           <Route path='/add' element={<AddRecipePage />}></Route>
           <Route path='/favorites' element={<Favorites />}></Route>
+          <Route path='/search' element={<SearchPage />}></Route>
         </Routes>
       </BrowserRouter>
     </div>

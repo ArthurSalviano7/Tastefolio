@@ -70,7 +70,7 @@ function NavBar(){
                 </div>
                 <div className="col-3">
                     <div className="d-flex justify-content-end gap-5">
-                        <li><FaSearch size={20}/></li>
+                        <li><FaSearch size={20} onClick={() => {navigate('/search')}}/></li>
                         <li><FaStar onClick={handleStarClick} size={20}/></li>
 
                         <div className="dropdown" ref={dropdownRef}>
@@ -80,7 +80,6 @@ function NavBar(){
                                 <div className="d-flex flex-column dropdown-content p-2">
                                     <a href="/login">Login</a> 
                                     <a href="/register">Registre-se</a>
-                                    <a href="#">Gerenciar conta</a>
                                     <a href="/" onClick={handleLogout}>Sair</a>
                                 </div> )}
                         </div>
